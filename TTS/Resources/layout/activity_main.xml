@@ -5,57 +5,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+        
+    <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:id="@+id/linearLayout1">
-        <TextView
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:id="@+id/textView1" />
-        <TextView
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2" />
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border"
+                android:id="@+id/spinner1" />
+            <ImageButton
+                android:src="@drawable/tombolswitch"
+                android:background="@null"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:id="@+id/buttonSwitch" />
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/border"
+                android:id="@+id/spinner2" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
-        android:layout_marginTop="100dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2">
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:height="150dp"
+            android:paddingLeft="10dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText1" />
-        <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
+            android:background="@drawable/border"
+            android:hint="masukkan kalimat yang mau diterjemahkan"
+            android:id="@+id/editText1" 
+            android:inputType="text|textMultiLine"/>
+        <ImageButton
+            android:src="@drawable/terjemahkan"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:background="@null"
+            android:id="@+id/btnTerjemahkan" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button1" />
-        <TextView
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="150.5dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3" />
+            android:id="@+id/linearLayout3">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:id="@+id/linearLayout4" >
+                    <TextView
+                        android:text="History"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView3" />
+                    <ImageButton
+                        android:src="@drawable/hapusriwayat"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:id="@+id/buttonHapus" />
+
+                </LinearLayout>
+            
+            <ListView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/listView1" />
+        </LinearLayout>
+    </LinearLayout>
         <TextView
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView4" />
+
     </LinearLayout>
+
 
     
     

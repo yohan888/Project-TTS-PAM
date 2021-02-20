@@ -2,7 +2,7 @@ adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
-Button;obj\Debug\90\res\layout\activity_main.xml
+Button;obj\Debug\90\res\layout\layout_translate.xml
 cache-path;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 color;obj\Debug\90\res\values\colors.xml
 color;obj\Debug\90\res\values\ic_launcher_background.xml
@@ -11,17 +11,28 @@ external-cache-path;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\3
 external-path;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
+ImageButton;obj\Debug\90\res\layout\activity_main.xml
+ImageButton;obj\Debug\90\res\layout\layout_translate.xml
+item;obj\Debug\90\res\drawable\border.xml
 item;obj\Debug\90\res\values\styles.xml
 LinearLayout;obj\Debug\90\res\layout\activity_main.xml
 LinearLayout;obj\Debug\90\res\layout\layout_translate.xml
+LinearLayout;obj\Debug\90\res\layout\list_item.xml
 LinearLayout;obj\Debug\90\res\layout\spinner_value.xml
+ListView;obj\Debug\90\res\layout\activity_main.xml
+ListView;obj\Debug\90\res\layout\layout_translate.xml
 paths;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 RelativeLayout;obj\Debug\90\res\layout\activity_main.xml
 resources;obj\Debug\90\res\values\colors.xml
 resources;obj\Debug\90\res\values\ic_launcher_background.xml
 resources;obj\Debug\90\res\values\strings.xml
 resources;obj\Debug\90\res\values\styles.xml
+selector;obj\Debug\90\res\drawable\border.xml
+shape;obj\Debug\90\res\drawable\border.xml
+Spinner;obj\Debug\90\res\layout\activity_main.xml
 string;obj\Debug\90\res\values\strings.xml
+stroke;obj\Debug\90\res\drawable\border.xml
 style;obj\Debug\90\res\values\styles.xml
 TextView;obj\Debug\90\res\layout\activity_main.xml
 TextView;obj\Debug\90\res\layout\layout_translate.xml
+TextView;obj\Debug\90\res\layout\list_item.xml
