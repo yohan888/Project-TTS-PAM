@@ -3,12 +3,12 @@ adaptive-icon;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 background;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 Button;obj\Debug\90\res\layout\layout_translate.xml
-cache-path;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+cache-path;E:\KULIAH\SEMESTER 8\PAM\T T S\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 color;obj\Debug\90\res\values\colors.xml
 color;obj\Debug\90\res\values\ic_launcher_background.xml
 EditText;obj\Debug\90\res\layout\activity_main.xml
-external-cache-path;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
-external-path;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-cache-path;E:\KULIAH\SEMESTER 8\PAM\T T S\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+external-path;E:\KULIAH\SEMESTER 8\PAM\T T S\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher.xml
 foreground;obj\Debug\90\res\mipmap-anydpi-v26\ic_launcher_round.xml
 ImageButton;obj\Debug\90\res\layout\activity_main.xml
@@ -21,7 +21,7 @@ LinearLayout;obj\Debug\90\res\layout\list_item.xml
 LinearLayout;obj\Debug\90\res\layout\spinner_value.xml
 ListView;obj\Debug\90\res\layout\activity_main.xml
 ListView;obj\Debug\90\res\layout\layout_translate.xml
-paths;C:\Users\Mario Wijaya\source\repos\TTS\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
+paths;E:\KULIAH\SEMESTER 8\PAM\T T S\TTS\obj\Debug\90\lp\36\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 RelativeLayout;obj\Debug\90\res\layout\activity_main.xml
 resources;obj\Debug\90\res\values\colors.xml
 resources;obj\Debug\90\res\values\ic_launcher_background.xml

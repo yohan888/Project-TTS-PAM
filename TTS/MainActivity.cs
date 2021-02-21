@@ -6,49 +6,45 @@ using Android.Widget;
 using RestSharp;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using Java.Util;
 using Android.Content;
 using System.IO;
 using SQLite;
-using System;
-using Android.Speech.Tts;
-using Newtonsoft.Json;
-using System.Linq;
 
 namespace TTS
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private TextView txt1, txt2, txt3, txt4, tester;
-        ImageButton translate, hapus, swit;
-        EditText text;
-        ListView lv;
-        Spinner spin, spin2;
-        TextToSpeech textToSpeech;
+        private ImageButton translate, hapus, swit;
+        private EditText text;
+        private ListView lv;
+        private Spinner spin, spin2;
+        private ArrayAdapter adapterSpinner;
         private ArrayAdapter<string> adapter;
         private List<string> Llist = new List<string>();
-        private List<string> Blist = new List<string>();
-        public static string bahasaSource, bahasaTarget;
-        public static int indexSource, indexTarget;
+        private string bahasaSource, bahasaTarget;
+        private int indexSource, indexTarget;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
+            //Pembuatan database
             string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "user.db3");
             var db = new SQLiteConnection(dbPath);
             db.CreateTable<History>();
+
+            //inisialisasi komponen 
             lv = (ListView)FindViewById(Resource.Id.listView1);
-            tester = (TextView)FindViewById(Resource.Id.textView4);
             translate = (ImageButton)FindViewById(Resource.Id.btnTerjemahkan);
             text = (EditText)FindViewById(Resource.Id.editText1);
             hapus = (ImageButton)FindViewById(Resource.Id.buttonHapus);
             spin = (Spinner)FindViewById(Resource.Id.spinner1);
             spin2 = (Spinner)FindViewById(Resource.Id.spinner2);
             swit = (ImageButton)FindViewById(Resource.Id.buttonSwitch);
+
+            //API list kode bahasa (111 bahasa)
             var client = new RestClient("https://google-translate1.p.rapidapi.com/language/translate/v2/languages");
             var request = new RestRequest(Method.GET);
             request.AddHeader("accept-encoding", "application/gzip");
@@ -57,36 +53,25 @@ namespace TTS
             IRestResponse response = client.Execute(request);
             JObject j = JObject.Parse(response.Content);
             JToken bahasa = j["data"]["languages"];
-            //tester.SetText(bahasa[0]["language"].ToString(), null);
-            for (int i=0; i<111; i++)
+            for (int i = 0; i < 111; i++)
             {
-                //fetchJSON(bahasa[i]["language"].ToString());
                 Llist.Add(bahasa[i]["language"].ToString());
             }
 
-            for (int i = 0; i < 111; i++)
-            {
-                /*var client2 = new RestClient("https://restcountries.eu/rest/v2/alpha/" + Llist[i]);
-                var request2 = new RestRequest(Method.GET);
-                IRestResponse response2 = client2.Execute(request2);
-                JObject j2 = JObject.Parse(response.Content);
-                JToken namaBahasa = j2["languages"];
-                Blist.Add(namaBahasa[0]["nativeName"].ToString());*/
-            }
-
-            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, Llist);
-
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spin.Adapter = adapter;
+            //Set spinner berdasarkan data dari API
+            adapterSpinner = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem, Llist);
+            adapterSpinner.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spin.Adapter = adapterSpinner;
             spin.ItemSelected += spiner_Click;
-            spin2.Adapter = adapter;
+            spin2.Adapter = adapterSpinner;
             spin2.ItemSelected += spiner_Click2;
 
+            //Mengisi listview history
             var listData = db.Table<History>();
             int index = 0;
             string[] history = new string[listData.Count()];
             adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleDropDownItem1Line);
-            if(listData == null){}
+            if (listData == null) { }
             else
             {
                 foreach (var s in listData)
@@ -96,18 +81,22 @@ namespace TTS
                 }
             }
 
+            //Tombol Terjemahkan
             translate.Click += delegate
             {
-                if(bahasaSource == bahasaTarget)
+                //proteksi jika pemilihan bahasa sama
+                if (bahasaSource == bahasaTarget)
                 {
                     Toast.MakeText(this, "Bahasa tidak boleh sama", ToastLength.Short).Show();
                 }
+                //proteksi jika teks masih kosong
                 if (text.Text.ToString().Equals("") | text.Text.ToString().Equals(null))
                 {
                     Toast.MakeText(this, "Masukkan kalimat", ToastLength.Short).Show();
                 }
                 else
                 {
+                    //API translate
                     var client1 = new RestClient("https://google-translate1.p.rapidapi.com/language/translate/v2");
                     var request1 = new RestRequest(Method.POST);
                     string kalimat = text.Text.ToString();
@@ -121,21 +110,26 @@ namespace TTS
                     IRestResponse response1 = client1.Execute(request1);
                     JObject j1 = JObject.Parse(response1.Content);
                     JToken bahasa1 = j1["data"]["translations"];
-                    Intent i = new Intent(this, typeof(ActivityTranslate));
+
+                    //Memasukkan translate tadi ke history
                     string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "user.db3");
                     var db = new SQLiteConnection(dbPath);
                     History history = new History();
                     history.Awal = kalimat;
                     history.Akhir = bahasa1[0]["translatedText"].ToString();
                     db.Insert(history);
+
+                    //Data untuk translate dikirim ke activity lain
+                    Intent i = new Intent(this, typeof(ActivityTranslate));
                     i.PutExtra("awal", kalimat);
                     i.PutExtra("akhir", bahasa1[0]["translatedText"].ToString());
                     i.PutExtra("bahasaAwal", bahasaSource);
                     i.PutExtra("bahasaAkhir", bahasaTarget);
                     StartActivity(i);
-                }     
+                }
             };
 
+            //Tombol hapus history
             hapus.Click += delegate
             {
                 string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "user.db3");
@@ -144,63 +138,33 @@ namespace TTS
                 StartActivity(typeof(MainActivity));
             };
 
+            //Tombol switch bahasa
             swit.Click += delegate
             {
                 spin.SetSelection(indexTarget);
                 spin2.SetSelection(indexSource);
             };
-
-            
-           
         }
 
-        private async void fetchJSON(string data)
-        {
-            try
-            {
-                RestClient restClient = new RestClient("https://restcountries.eu/rest/v2");
-                RestRequest restRequest = new RestRequest("/alpha/" + data);
-                IRestResponse restResponse = await restClient.ExecuteTaskAsync(restRequest);
-                JObject jobject = JObject.Parse(restResponse.Content);
-                JToken jGenre = jobject["languages"];
-                Blist.Add(jGenre[0]["nativeName"].ToString());
-            }
-            catch(Exception e)
-            {
-                Blist.Add(data);
-            }
-            
-        }
-
+        //Method saat spinner dipilih
         private void spiner_Click(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             bahasaSource = spin.GetItemAtPosition(e.Position).ToString();
             indexSource = e.Position;
         }
 
+        //Method saat spinner dipilih
         private void spiner_Click2(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             bahasaTarget = spin2.GetItemAtPosition(e.Position).ToString();
             indexTarget = e.Position;
         }
 
-        public void createDB()
-        {
-            string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "user.db3");
-            var db = new SQLiteConnection(dbPath);
-            db.CreateTable<History>();
-        }
-        
+        //Method bawaan
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-        public static void CustomerInfo(string json)
-        {
-            JArray a = JArray.Parse(json);
         }
     }
 }

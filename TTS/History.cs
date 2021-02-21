@@ -15,7 +15,7 @@ namespace TTS
     [Table("History")]
     public class History
     {
-        
+
         private int id;
         private string awal;
         private string akhir;

@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mario Wijaya\\source\\repos\\TTS\\TTS\\TTS.csproj": {}
+    "E:\\KULIAH\\SEMESTER 8\\PAM\\T T S\\TTS\\TTS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mario Wijaya\\source\\repos\\TTS\\TTS\\TTS.csproj": {
+    "E:\\KULIAH\\SEMESTER 8\\PAM\\T T S\\TTS\\TTS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mario Wijaya\\source\\repos\\TTS\\TTS\\TTS.csproj",
+        "projectUniqueName": "E:\\KULIAH\\SEMESTER 8\\PAM\\T T S\\TTS\\TTS.csproj",
         "projectName": "TTS",
-        "projectPath": "C:\\Users\\Mario Wijaya\\source\\repos\\TTS\\TTS\\TTS.csproj",
-        "packagesPath": "C:\\Users\\Mario Wijaya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mario Wijaya\\source\\repos\\TTS\\TTS\\obj\\",
+        "projectPath": "E:\\KULIAH\\SEMESTER 8\\PAM\\T T S\\TTS\\TTS.csproj",
+        "packagesPath": "C:\\Users\\yohan\\.nuget\\packages\\",
+        "outputPath": "E:\\KULIAH\\SEMESTER 8\\PAM\\T T S\\TTS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mario Wijaya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\yohan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
